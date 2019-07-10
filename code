@@ -1,0 +1,84 @@
+bakiye = 2000
+
+
+cinsiyet = "bey"
+a = "bey"
+
+loginmemory = "kerem" #kullanıcı adımızı belirledik
+loginpassmemory = "123456"  #kullanıcı şifremizi belirledik
+hak = 2
+print("""
+************************************************
+*  Güvenlik Arayüzü V.2 & ATM SYSTEMS          *
+*                                              *    
+*                                              *           
+* Güvenlik Arayüzü sistemimize hoş geldiniz    *
+* ATM ile ilgili bilgiler giriş yapılırsa      *
+* çıkacaktır                                   *
+* Giriş için 3 hakkınız vardır!                *
+* Sistem KEREM ÖZDEMİR tarafından tasarlandı   *
+* Bu yazılım MIT LİCENSE tarafından korunuyor! * 
+*                                              * 
+*            Powerd BY. Kerem ÖZDEMİR          * 
+*                                              *
+*                                              *
+************************************************
+
+
+
+
+
+""")
+while True:
+    login = input("Kullanıcı adını giriniz ")
+    loginpass = input("Şifreyi giriniz")
+    if (hak == 0):
+        print("Deneme hakkınız bitmiştir. Sistemden engellendiniz!!")
+        break
+    elif (login != loginmemory and loginpass == loginpassmemory):
+        hak -= 1
+        print("kullanıcı adınız yanlış. Son deneme ", hak , "hakkınız kaldı")
+    elif (login == loginmemory and loginpass != loginpassmemory):
+        hak -= 1
+        print("kullanıcı şifreniz yanlış. Son deneme", hak ," hakkınız kaldı")
+    elif (login != loginmemory and loginpass != loginpassmemory):
+        hak -= 1
+        print("kullanıcı adınız yanlış. Son deneme ", hak ,"hakkınız kaldı")
+    else:
+        print("Giriş kabul edildi HOŞGELDİNİZ :)")
+        while True:
+            print("""
+            *********************************************************
+            *            ATM                                        *        
+            *                                                       *    
+            *  İşlemler:                                            *    
+            *  1. Bakiye görme                                      *            
+            *  2. Para yükleme                                      *
+            *  3. Para çekme                                        *    
+            *                                                       *                
+            *  -Sistem Kerem Özdemir tarafından tasarlanmıştır.     *    
+            *  -İzinsiz kopyalanması yasaktır!!!                    *        
+            *                                                       *    
+            *            Powered By. Kerem                           *    
+            *                                                       *    
+            *********************************************************
+            """)
+            print("Sayın {} {}".format(loginmemory,a))
+            islem = input("lütfen işlemi girin")
+            if (islem == "q"):
+                print("Teşekkürler, yine bekleriz")
+                break
+            elif (islem == "1"):
+                print(bakiye)
+            elif (islem == "2"):
+                t = int(input("Hesabınıza yatırmak istediğiniz tutar?"))
+                bakiye += t
+            elif (islem == "3"):
+                cekim = int(input("Çekmek istediğiniz tutar?"))
+                if (bakiye - cekim < 0):
+                    print("Üzgünüz hesabınızda bu kadar para yok :(")
+                    continue
+                bakiye -= cekim
+            else:
+                print("Geçersiz işlem lütfen baştan deneyin")
+                continue
